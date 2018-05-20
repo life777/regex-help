@@ -8,7 +8,6 @@
 |+      |1 or many times (the same as {1,}) |
 |*      |0 or many times (the same as {0,}) |
 |{n,m}  |n <= k <= m times                  |
-|       |                                   |
 
 **Examples**
 
@@ -52,7 +51,6 @@ In string `Hello world` will be found:
 |-------|-----------------------------------|
 |^      |Matches beginning of the string    |
 |$      |Matches end of the string          |
-|       |                                   |
 
 **Examples**
 
@@ -72,7 +70,6 @@ In string `hello hard world` will be found:
 |(!?)   |Negative lookahead                 |
 |(?<=)  |Positive lookbehind                |
 |(?<!)  |Negative lookbehind                |
-|       |                                   |
 
 > Lookbehind was added only in ES2018, be careful with using it
 
@@ -95,7 +92,6 @@ In string `a1ba2ba3b` will be found:
 |[]     |Enumerate possible symbols (or their absence)|
 |.      |Any symbol                         |
 |\|     |Operator OR                        |
-|       |                                   |
 
 **Examples**
 
@@ -130,4 +126,3 @@ In string `barfoooooobar` will be found:
 |\xhh   |Character with the code hh         |
 |\uhhhh |Character with the code hhhh       |
 |\u{hhhhh}|Character with the Unicode value hhhhh   |
-|       |                                   |
