@@ -1,2 +1,133 @@
-# regex-help
-Small cheatsheet for Regex (JavaScript)
+# Regex Cheatsheet (JavaScript)
+
+## Amount of symbols
+
+|Symbol |Description                        |
+|-------|-----------------------------------|
+|?      |1 or 0 times (the same as {0,1})   |
+|+      |1 or many times (the same as {1,}) |
+|*      |0 or many times (the same as {0,}) |
+|{n,m}  |n <= k <= m times                  |
+|       |                                   |
+
+**Examples**
+
+> All examples use flag `g` for global search.
+
+In string `Hello world` will be found:
+
+    /le?/ - 3 letters "l"
+    /el?/ - part "el"
+
+    /le+/ - nothing
+    /el+/ - part "ell"
+
+    /le*/ - 3 letters "l"
+
+    /ll{0,1}/ - parts "ll" and "l"
+
+## Greedy/non-greedy search
+
+By default all Regexes are greedy. To make non-greedy search `?` should be used after  any of the quantifiers *, +, ?, or {}.
+
+**Examples**
+
+In string `Hello world` will be found:
+
+    /el?/ - part "el"
+    /el??/ - part "e"
+
+    /el+/ - part "ell"
+    /el+?/ - part "el"
+
+    /el*/ - part "ell"
+    /el*?/ - letter "e"
+
+    /l{1,2}/ - parts "ll" and "l"
+    /l{1,2}?/ - 3 letters "l"
+
+## Beginning or end of the string
+
+|Symbol |Description                        |
+|-------|-----------------------------------|
+|^      |Matches beginning of the string    |
+|$      |Matches end of the string          |
+|       |                                   |
+
+**Examples**
+
+In string `hello hard world` will be found:
+
+    /h/ - 2 letters "h"
+    /^h/ - first letter "h"
+
+    /d/ - 2 letters "d"
+    /d$/ - last letter "d"
+
+## Lookahead and lookbehind
+
+|Symbol |Description                        |
+|-------|-----------------------------------|
+|(?=)   |Positive lookahead                 |
+|(!?)   |Negative lookahead                 |
+|(?<=)  |Positive lookbehind                |
+|(?<!)  |Negative lookbehind                |
+|       |                                   |
+
+> Lookbehind was added only in ES2018, be careful with using it
+
+**Examples**
+
+In string `a1ba2ba3b` will be found:
+
+    /b(?=a2|a3)/ - 2 letters "b"
+    /b(?!a2|a3)/ - last letter "b"
+
+    /(?<=a1|a2)b/ - 2 letters "d"
+    /(?<!a1|a2)b/ - last letter "d"
+
+## Sets of symbols
+
+|Symbol |Description                        |
+|-------|-----------------------------------|
+|()     |Group set of symbols               |
+|(?:)   |Group set of symbols, but don't remember|
+|[]     |Enumerate possible symbols (or their absence)|
+|.      |Any symbol                         |
+|\|     |Operator OR                        |
+|       |                                   |
+
+**Examples**
+
+In string `barfoooooobar` will be found:
+
+    /foo{1,2}/ - part "fooo"
+    /(foo){1,2}/ - part "foo"
+    /(?:foo){1,2}/ - part "foo"
+
+    /[^a-o]/ - 2 letters "r"
+    /[abc]/ - 4 letters "b", "a", "b" and "a" 
+
+## Special symbols
+
+|Symbol |Description                        |
+|-------|-----------------------------------|
+|\b     |Word boundary                      |
+|\B     |Non-word boundary                  |
+|\cX    |Control character                  |
+|\d     |Digit character                    |
+|\D     |Non-digit character                |
+|\w     |Alphanumeric character including the underscore                                  |
+|\W     |Non-word character                 |
+|\s     |single white space character, including space, tab, form feed, line feed  |
+|\S     |Single character other than white space   |
+|\t     |Tab                                |
+|\v     |Vertical tab                       |
+|\f     |Line feed                          |
+|\n     |New line                           |
+|\r     |Сarriage return                    |
+|\1     |Back reference to first () group (can be used any integer)                   |
+|\xhh   |Character with the code hh         |
+|\uhhhh |Character with the code hhhh       |
+|\u{hhhhh}|Character with the Unicode value hhhhh   |
+|       |                                   |
