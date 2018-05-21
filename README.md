@@ -167,3 +167,14 @@ In string `abc!abc` will be found:
 
     /^(?<word>\w+)!\k<word>$/ - whole phrase
     /^(\w+)!\1$/ - whole phrase
+
+## JavaScript Regex flags
+
+|Symbol |Description                        |
+|-------|-----------------------------------|
+|g      |Global search                      |
+|m      |Multiline search                   |
+|i      |Case insensitive search            |
+|u      |Full unicode support               |
+|y      |Sticky mode                        |
+|s      |Dot matches all                    |
