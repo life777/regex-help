@@ -108,6 +108,7 @@ In string `barfoooooobar` will be found:
 
 |Symbol |Description                        |
 |-------|-----------------------------------|
+|.      |Any symbol                         |
 |\b     |Word boundary                      |
 |\B     |Non-word boundary                  |
 |\cX    |Control character                  |
@@ -125,4 +126,44 @@ In string `barfoooooobar` will be found:
 |\1     |Back reference to first () group (can be used any integer)                   |
 |\xhh   |Character with the code hh         |
 |\uhhhh |Character with the code hhhh       |
-|\u{hhhhh}|Character with the Unicode value hhhhh   |
+|\u{hhhhh}|*Character with the Unicode value hhhhh   |
+|\p{X}  |*Symbols that are included in group X       |
+
+> *Works only with u flag and in ES2018
+
+**Examples**
+
+In string `Hello World_1` will be found:
+
+    /\bW/ - letter "W"
+    /\w\d/ - part "_1"
+    /\Bd/ - letter "d"
+
+In string `💏🤳` selfie emoji can be found with `u` flag: 
+
+    /\u{1f933}/ - emoji "🤳"
+
+In string `πüé HelloWorld` will be found: 
+
+    /\p{White_Space}/ - space " "
+    /\p{Letter}/ - all letters in phrase
+    /\p{Script=Greek}/ - letter "π"
+    /\p{Script=Latin}/ - letters "ü", "é", "a", "s", "a", "s"
+
+> To see all possible aliases for different groups of symbols [go here](http://unicode.org/Public/UNIDATA/PropertyValueAliases.txt)
+
+
+## Named capture groups
+
+To give a name to the group inside your Regex you should use this syntax: (?\<SomeName\>), to use this group inside the same Regex use this syntax: \k\<SomeName\>.
+
+**Examples**
+
+In string `2018-05-22` will be found:
+
+    /(?<year>[0-9]{4})-(?<month>[0-9]{2})-(?<day>[0-9]{2})/ - year, month and day and can be reached by the same names.
+
+In string `abc!abc` will be found:
+
+    /^(?<word>\w+)!\k<word>$/ - whole phrase
+    /^(\w+)!\1$/ - whole phrase
