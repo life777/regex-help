@@ -1,5 +1,16 @@
 # Regex Cheatsheet (JavaScript)
 
+|Menu                        |
+|-----------------------------------|
+[Amount of symbols](#amount-of-symbols)    |
+[Greedy/non-greedy search](#greedynon-greedy-search)    |
+[Beginning or end of the string](#beginning-or-end-of-the-string)    |
+[Lookahead and lookbehind](#lookahead-and-lookbehind)    |
+[Sets of symbols](#sets-of-symbols)    |
+[Special symbols](#special-symbols)    |
+[Named capture groups](#named-capture-groups)    |
+[JavaScript Regex flags](#javascript-regex-flags)    |
+
 ## Amount of symbols
 
 |Symbol |Description                        |
