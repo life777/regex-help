@@ -1,15 +1,15 @@
 # Regex Cheatsheet (JavaScript)
 
-|Menu                        |
-|-----------------------------------|
-[Amount of symbols](#amount-of-symbols)    |
-[Greedy/non-greedy search](#greedynon-greedy-search)    |
-[Beginning or end of the string](#beginning-or-end-of-the-string)    |
-[Lookahead and lookbehind](#lookahead-and-lookbehind)    |
-[Sets of symbols](#sets-of-symbols)    |
-[Special symbols](#special-symbols)    |
-[Named capture groups](#named-capture-groups)    |
-[JavaScript Regex flags](#javascript-regex-flags)    |
+|Menu                                   |
+|---------------------------------------|
+|[Amount of symbols](#amount-of-symbols)|
+|[Greedy/non-greedy search](#greedynon-greedy-search)              |
+|[Beginning or end of the string](#beginning-or-end-of-the-string)       |
+|[Lookahead and lookbehind](#lookahead-and-lookbehind)             |
+|[Sets of symbols](#sets-of-symbols)    |
+|[Special symbols](#special-symbols)    |
+|[Named capture groups](#named-capture-groups)                                        |
+|[JavaScript Regex flags](#javascript-regex-flags)               |
 
 ## Amount of symbols
 
@@ -186,6 +186,27 @@ In string `abc!abc` will be found:
 |g      |Global search                      |
 |m      |Multiline search                   |
 |i      |Case insensitive search            |
-|u      |Full unicode support               |
-|y      |Sticky mode                        |
-|s      |Dot matches all                    |
+|u*     |Full unicode support               |
+|y      |Sticky mode (starts from lastIndex)|
+|s*     |Dot matches all                    |
+
+> *Works only in ES2018
+
+**Examples**
+
+In string `foo💩bar` will be found:
+
+    /foo.bar/ - nothing
+    /foo.bar/u - whole string
+    /[💩-💫]/ - error (it can't be compiled)
+    /[💩-💫]/u - 💩 symbol
+
+In string `abc!abc` will be found:
+
+    /abc/ - first part "abc"
+    /abc/g - all parts "abc"
+
+In string `abc\nabc` will be found:
+
+    /abc./ - nothing ("." is any symbol, but new line)
+    /abc./s - first part "abc\n"
