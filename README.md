@@ -91,8 +91,8 @@ In string `a1ba2ba3b` will be found:
     /b(?=a2|a3)/ - 2 letters "b"
     /b(?!a2|a3)/ - last letter "b"
 
-    /(?<=a1|a2)b/ - 2 letters "d"
-    /(?<!a1|a2)b/ - last letter "d"
+    /(?<=a1|a2)b/ - 2 letters "b"
+    /(?<!a1|a2)b/ - last letter "b"
 
 ## Sets of symbols
 
