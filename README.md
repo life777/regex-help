@@ -154,12 +154,12 @@ In string `💏🤳` selfie emoji can be found with `u` flag:
 
     /\u{1f933}/ - emoji "🤳"
 
-In string `πüé HelloWorld` will be found: 
+In string `πüé HelloWorld` will be found with `u` flag: 
 
     /\p{White_Space}/ - space " "
     /\p{Letter}/ - all letters in phrase
     /\p{Script=Greek}/ - letter "π"
-    /\p{Script=Latin}/ - letters "ü", "é", "a", "s", "a", "s"
+    /\p{Script=Latin}/ - letters "ü", "é", "H", "e", "l", "l", "o", "W", "o", "r", "l", "d"
 
 > To see all possible aliases for different groups of symbols [go here](http://unicode.org/Public/UNIDATA/PropertyValueAliases.txt)
 
