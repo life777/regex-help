@@ -22,19 +22,17 @@
 
 **Examples**
 
-> All examples use flag `g` for global search.
-
 In string `Hello world` will be found:
 
-    /le?/ - 3 letters "l"
-    /el?/ - part "el"
+    /le?/g - 3 letters "l"
+    /el?/g - part "el"
 
-    /le+/ - nothing
-    /el+/ - part "ell"
+    /le+/g - nothing
+    /el+/g - part "ell"
 
-    /le*/ - 3 letters "l"
+    /le*/g - 3 letters "l"
 
-    /ll{0,1}/ - parts "ll" and "l"
+    /ll{0,1}/g - parts "ll" and "l"
 
 ## Greedy/non-greedy search
 
@@ -44,17 +42,17 @@ By default all Regexes are greedy. To make non-greedy search `?` should be used 
 
 In string `Hello world` will be found:
 
-    /el?/ - part "el"
-    /el??/ - part "e"
+    /el?/g - part "el"
+    /el??/g - part "e"
 
-    /el+/ - part "ell"
-    /el+?/ - part "el"
+    /el+/g - part "ell"
+    /el+?/g - part "el"
 
-    /el*/ - part "ell"
-    /el*?/ - letter "e"
+    /el*/g - part "ell"
+    /el*?/g - letter "e"
 
-    /l{1,2}/ - parts "ll" and "l"
-    /l{1,2}?/ - 3 letters "l"
+    /l{1,2}/g - parts "ll" and "l"
+    /l{1,2}?/g - 3 letters "l"
 
 ## Beginning or end of the string
 
@@ -67,11 +65,11 @@ In string `Hello world` will be found:
 
 In string `hello hard world` will be found:
 
-    /h/ - 2 letters "h"
-    /^h/ - first letter "h"
+    /h/g - 2 letters "h"
+    /^h/g - first letter "h"
 
-    /d/ - 2 letters "d"
-    /d$/ - last letter "d"
+    /d/g - 2 letters "d"
+    /d$/g - last letter "d"
 
 ## Lookahead and lookbehind
 
@@ -88,11 +86,11 @@ In string `hello hard world` will be found:
 
 In string `a1ba2ba3b` will be found:
 
-    /b(?=a2|a3)/ - 2 letters "b"
-    /b(?!a2|a3)/ - last letter "b"
+    /b(?=a2|a3)/g - 2 letters "b"
+    /b(?!a2|a3)/g - last letter "b"
 
-    /(?<=a1|a2)b/ - 2 letters "b"
-    /(?<!a1|a2)b/ - last letter "b"
+    /(?<=a1|a2)b/g - 2 letters "b"
+    /(?<!a1|a2)b/g - last letter "b"
 
 ## Sets of symbols
 
@@ -108,12 +106,12 @@ In string `a1ba2ba3b` will be found:
 
 In string `barfoooooobar` will be found:
 
-    /foo{1,2}/ - part "fooo"
-    /(foo){1,2}/ - part "foo"
-    /(?:foo){1,2}/ - part "foo"
+    /foo{1,2}/g - part "fooo"
+    /(foo){1,2}/g - part "foo"
+    /(?:foo){1,2}/g - part "foo"
 
-    /[^a-o]/ - 2 letters "r"
-    /[abc]/ - 4 letters "b", "a", "b" and "a" 
+    /[^a-o]/g - 2 letters "r"
+    /[abc]/g - 4 letters "b", "a", "b" and "a" 
 
 ## Special symbols
 
@@ -146,20 +144,20 @@ In string `barfoooooobar` will be found:
 
 In string `Hello World_1` will be found:
 
-    /\bW/ - letter "W"
-    /\w\d/ - part "_1"
-    /\Bd/ - letter "d"
+    /\bW/g - letter "W"
+    /\w\d/g - part "_1"
+    /\Bd/g - letter "d"
 
 In string `💏🤳` selfie emoji can be found with `u` flag: 
 
-    /\u{1f933}/ - emoji "🤳"
+    /\u{1f933}/u - emoji "🤳"
 
 In string `πüé HelloWorld` will be found with `u` flag: 
 
-    /\p{White_Space}/ - space " "
-    /\p{Letter}/ - all letters in phrase
-    /\p{Script=Greek}/ - letter "π"
-    /\p{Script=Latin}/ - letters "ü", "é", "H", "e", "l", "l", "o", "W", "o", "r", "l", "d"
+    /\p{White_Space}/gu - space " "
+    /\p{Letter}/gu - all letters in phrase
+    /\p{Script=Greek}/gu - letter "π"
+    /\p{Script=Latin}/gu - letters "ü", "é", "H", "e", "l", "l", "o", "W", "o", "r", "l", "d"
 
 > To see all possible aliases for different groups of symbols [go here](http://unicode.org/Public/UNIDATA/PropertyValueAliases.txt)
 
@@ -176,8 +174,8 @@ In string `2018-05-22` will be found:
 
 In string `abc!abc` will be found:
 
-    /^(?<word>\w+)!\k<word>$/ - whole phrase
-    /^(\w+)!\1$/ - whole phrase
+    /^(?<word>\w+)!\k<word>$/g - whole phrase
+    /^(\w+)!\1$/g - whole phrase
 
 ## JavaScript Regex flags
 
