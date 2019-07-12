@@ -140,6 +140,8 @@ In string `barfoooooobar` will be found:
 
 > *Works only with u flag and in ES2018
 
+> \p{X} works wrong in Edge (see [bug](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7113940/)).
+
 **Examples**
 
 In string `Hello World_1` will be found:
